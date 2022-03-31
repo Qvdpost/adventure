@@ -30,7 +30,7 @@ class Adventure():
     def move(self, direction):
         if self._current_room.has_connection(direction):
             for connection in self._current_room.get_connections(direction):
-                if connection.item is None or connection.item in self.items:
+                if connection.item is None or connection.item in self._items:
                     self._current_room = connection.destination
                     return True
 
