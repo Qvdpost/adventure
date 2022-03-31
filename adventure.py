@@ -36,6 +36,8 @@ class Adventure():
 
         return False
 
+    def is_forced(self):
+        return self._current_room.is_forced
 
 if __name__ == "__main__":
 
@@ -72,6 +74,9 @@ if __name__ == "__main__":
         # Perform the move or other command
         if adventure.move(command):
             print(adventure.room_description())
+            while adventure.is_forced():
+                adventure.move("FORCED")
+                print(adventure.room_description())
         elif "TAKE" in command.split():
             if adventure.take(command.split()[1]):
                 print("Item taken.")
